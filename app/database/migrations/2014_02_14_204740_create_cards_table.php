@@ -14,7 +14,8 @@ class CreateCardsTable extends Migration {
 	{
 		Schema::create('cards', function($table)
 		{
-			$table->increments('id');
+			$table->integer('id')->unsigned();
+			$table->primary('id');
 			$table->string('name');
 			$table->string('u', 1);
 			$table->string('r', 1);

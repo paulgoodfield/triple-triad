@@ -13,5 +13,14 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	$cards = Card::all();
+
+	$data['html'] = '';
+
+	foreach( $cards as $c )
+	{
+		$data['html'] .= $c->make();
+	}
+
+	return View::make('cards.show', $data);
 });

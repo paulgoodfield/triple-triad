@@ -1,0 +1,46 @@
+.card {
+	position: relative;
+	width: 150px;
+	height: 150px;
+	border: 1px solid black;
+
+	* {
+		position: absolute;
+		text-align: center;
+		padding: 10px;
+		color: white;
+	}
+}
+.card--mine {
+	@extend .card;
+	background-color: blue;
+}
+.card--yours {
+	@extend .card;
+	background-color: red;
+}
+
+.card__name {
+	bottom: 0;
+	width: 100%;
+}
+.card__up {
+	top: 0;
+	width: 100%;
+}
+.card__right,
+.card__left {
+	position: absolute;
+	top: 30px;
+	width: 50%;
+}
+.card__right {
+	right: 0;
+}
+.card__left {
+	left: 0;
+}
+.card__down {
+	top: 60px;
+	width: 100%;
+}

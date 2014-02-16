@@ -561,22 +561,25 @@ body {
   h2,
   h3 {
     page-break-after: avoid; } }
-.card, .card--mine, .card--yours {
+.card, .card--p1, .card--p2 {
   position: relative;
   width: 150px;
   height: 150px;
   border: 1px solid black;
-  cursor: pointer; }
-  .card *, .card--mine *, .card--yours * {
+  cursor: pointer;
+  -webkit-transition: background-color 0.5s ease-in-out;
+  -moz-transition: background-color 0.5s ease-in-out;
+  transition: background-color 0.5s ease-in-out; }
+  .card *, .card--p1 *, .card--p2 * {
     position: absolute;
     text-align: center;
     padding: 10px;
     color: white; }
 
-.card--mine {
+.card--p1 {
   background-color: blue; }
 
-.card--yours {
+.card--p2 {
   background-color: red; }
 
 .card__name {

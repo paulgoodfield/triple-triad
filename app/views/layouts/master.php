@@ -14,7 +14,7 @@
 
 		<div class="card-holder">
 
-			<div class="card--{{card1.owner}}" data-drag="true" jqyoui-draggable="{animate:true, onStart:'startCallback(card1)', onStop:'stopCallback', onDrag:'dragCallback'}" data-jqyoui-options="{snap:'.grid__item', snapMode:'inner', snapTolerance:75, revert:'invalid', cursor:'move'}">
+			<div class="card--p{{card1.owner}}" data-drag="true" jqyoui-draggable="{animate:true, onStart:'startCallback(card1)', onStop:'stopCallback', onDrag:'dragCallback'}" data-jqyoui-options="{snap:'.grid__item', snapMode:'inner', snapTolerance:75, revert:'invalid', cursor:'move'}">
 				<div class="card__name">Card 1</div>
 				<div class="card__up">{{card1.up}}</div>
 				<div class="card__right">{{card1.right}}</div>
@@ -22,7 +22,7 @@
 				<div class="card__left">{{card1.left}}</div>
 			</div>
 
-			<div class="card--{{card2.owner}}" data-drag="true" jqyoui-draggable="{animate:true, onStart:'startCallback(card2)', onStop:'stopCallback', onDrag:'dragCallback'}" data-jqyoui-options="{snap:'.grid__item', snapMode:'inner', snapTolerance:75, revert:'invalid', cursor:'move'}">
+			<div class="card--p{{card2.owner}}" data-drag="true" jqyoui-draggable="{animate:true, onStart:'startCallback(card2)', onStop:'stopCallback', onDrag:'dragCallback'}" data-jqyoui-options="{snap:'.grid__item', snapMode:'inner', snapTolerance:75, revert:'invalid', cursor:'move'}">
 				<div class="card__name">Card 2</div>
 				<div class="card__up">{{card2.up}}</div>
 				<div class="card__right">{{card2.right}}</div>
@@ -53,47 +53,215 @@
 	app.controller('x', function ($scope)
 	{
 		$scope.card1 = {
+			'name':'Card 1',
 			'up':1,
 			'right':2,
 			'down':3,
 			'left':4,
-			'owner':'mine'
+			'owner':1,
+			'pos': false
 		};
 		$scope.card2 = {
+			'name':'Card 2',
 			'up':4,
 			'right':3,
 			'down':2,
 			'left':1,
-			'owner':'mine'
+			'owner':2,
+			'pos': false
 		};
 
-		$scope.griditem1 = {'num':1,'drop':true};
-		$scope.griditem2 = {'num':2,'drop':true};
-		$scope.griditem3 = {'num':3,'drop':true};
-		$scope.griditem4 = {'num':4,'drop':true};
-		$scope.griditem5 = {'num':5,'drop':true};
-		$scope.griditem6 = {'num':6,'drop':true};
-		$scope.griditem7 = {'num':7,'drop':true};
-		$scope.griditem8 = {'num':8,'drop':true};
-		$scope.griditem9 = {'num':9,'drop':true};
+		$scope.griditem1 = {
+			'num':1,
+			'drop':true,
+			'card':false
+		};
+		$scope.griditem2 = {
+			'num':2,
+			'drop':true,
+			'card':false
+		};
+		$scope.griditem3 = {
+			'num':3,
+			'drop':true,
+			'card':false
+		};
+		$scope.griditem4 = {
+			'num':4,
+			'drop':true,
+			'card':false
+		};
+		$scope.griditem5 = {
+			'num':5,
+			'drop':true,
+			'card':false
+		};
+		$scope.griditem6 = {
+			'num':6,
+			'drop':true,
+			'card':false
+		};
+		$scope.griditem7 = {
+			'num':7,
+			'drop':true,
+			'card':false
+		};
+		$scope.griditem8 = {
+			'num':8,
+			'drop':true,
+			'card':false
+		};
+		$scope.griditem9 = {
+			'num':9,
+			'drop':true,
+			'card':false
+		};
 
 		$scope.startCallback = function (event, ui, card) {
-		    console.log('You started draggin '+ card.up);
-		    $scope.currUp = card.up;
+		    //console.log('You started draggin '+ card.up);
+		    $scope.currCard = card;
 		};
 
 		$scope.stopCallback = function (event, ui) {
-		    console.log('Why did you stop draggin me?');
+		    //console.log('Why did you stop draggin me?');
 		};
 
 		$scope.dragCallback = function (event, ui) {
-		    console.log('hey, look I`m flying');
+		    //console.log('hey, look I`m flying');
 		};
 
 		$scope.dropCallback = function (event, ui, griditem) {
-			//console.log($scope.currUp);
-			console.log('Dropped onto grid '+griditem.num);
-			griditem.drop = false;
+			card 		= $scope.currCard;
+			card.pos 	= griditem.num;
+
+			console.log( card.name + ' was dropped onto grid ' + card.pos );
+
+			griditem.drop 	= false;
+			griditem.card	= card;
+
+			if ( card.pos == 1 )
+			{
+				if ( $scope.griditem2.card != false && $scope.griditem2.card.left < card.right )
+				{
+					$scope.griditem2.card.owner = card.owner;
+				}
+				if ( $scope.griditem4.card != false && $scope.griditem4.card.up < card.down )
+				{
+					$scope.griditem4.card.owner = card.owner;
+				}
+			}
+			if ( card.pos == 2 )
+			{
+				if ( $scope.griditem1.card != false && $scope.griditem1.card.right < card.left )
+				{
+					$scope.griditem1.card.owner = card.owner;
+				}
+				if ( $scope.griditem3.card != false && $scope.griditem3.card.left < card.right )
+				{
+					$scope.griditem3.card.owner = card.owner;
+				}
+				if ( $scope.griditem5.card != false && $scope.griditem5.card.up < card.down )
+				{
+					$scope.griditem5.card.owner = card.owner;
+				}
+			}
+			if ( card.pos == 3 )
+			{
+				if ( $scope.griditem2.card != false && $scope.griditem2.card.right < card.left )
+				{
+					$scope.griditem2.card.owner = card.owner;
+				}
+				if ( $scope.griditem6.card != false && $scope.griditem6.card.up < card.down )
+				{
+					$scope.griditem6.card.owner = card.owner;
+				}
+			}
+			if ( card.pos == 4 )
+			{
+				if ( $scope.griditem1.card != false && $scope.griditem1.card.down < card.up )
+				{
+					$scope.griditem1.card.owner = card.owner;
+				}
+				if ( $scope.griditem5.card != false && $scope.griditem5.card.left < card.right )
+				{
+					$scope.griditem5.card.owner = card.owner;
+				}
+				if ( $scope.griditem7.card != false && $scope.griditem7.card.up < card.down )
+				{
+					$scope.griditem7.card.owner = card.owner;
+				}
+			}
+			if ( card.pos == 5 )
+			{
+				if ( $scope.griditem2.card != false && $scope.griditem2.card.down < card.up )
+				{
+					$scope.griditem2.card.owner = card.owner;
+				}
+				if ( $scope.griditem4.card != false && $scope.griditem4.card.right < card.left )
+				{
+					$scope.griditem4.card.owner = card.owner;
+				}
+				if ( $scope.griditem6.card != false && $scope.griditem6.card.left < card.right )
+				{
+					$scope.griditem6.card.owner = card.owner;
+				}
+				if ( $scope.griditem8.card != false && $scope.griditem8.card.up < card.down )
+				{
+					$scope.griditem8.card.owner = card.owner;
+				}
+			}
+			if ( card.pos == 6 )
+			{
+				if ( $scope.griditem3.card != false && $scope.griditem3.card.down < card.up )
+				{
+					$scope.griditem3.card.owner = card.owner;
+				}
+				if ( $scope.griditem5.card != false && $scope.griditem5.card.right < card.left )
+				{
+					$scope.griditem5.card.owner = card.owner;
+				}
+				if ( $scope.griditem9.card != false && $scope.griditem9.card.up < card.down )
+				{
+					$scope.griditem9.card.owner = card.owner;
+				}
+			}
+			if ( card.pos == 7 )
+			{
+				if ( $scope.griditem4.card != false && $scope.griditem4.card.down < card.up )
+				{
+					$scope.griditem4.card.owner = card.owner;
+				}
+				if ( $scope.griditem8.card != false && $scope.griditem8.card.left < card.right )
+				{
+					$scope.griditem8.card.owner = card.owner;
+				}
+			}
+			if ( card.pos == 8 )
+			{
+				if ( $scope.griditem7.card != false && $scope.griditem7.card.right < card.left )
+				{
+					$scope.griditem7.card.owner = card.owner;
+				}
+				if ( $scope.griditem5.card != false && $scope.griditem5.card.down < card.up )
+				{
+					$scope.griditem5.card.owner = card.owner;
+				}
+				if ( $scope.griditem9.card != false && $scope.griditem9.card.left < card.right )
+				{
+					$scope.griditem9.card.owner = card.owner;
+				}
+			}
+			if ( card.pos == 9 )
+			{
+				if ( $scope.griditem6.card != false && $scope.griditem6.card.down < card.up )
+				{
+					$scope.griditem6.card.owner = card.owner;
+				}
+				if ( $scope.griditem8.card != false && $scope.griditem8.card.right < card.left )
+				{
+					$scope.griditem8.card.owner = card.owner;
+				}
+			}
 		};
 	});
 	</script>

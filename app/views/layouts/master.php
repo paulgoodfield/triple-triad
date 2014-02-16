@@ -33,7 +33,17 @@
 		</div>
 
 		<div class="grid">
-			<div class="grid__item" ng-model="griditem" data-drop="{{griditem.drop}}" jqyoui-droppable="{onDrop:'dropCallback(griditem)'}"></div>
+			<div class="grid__item grid__item--1" ng-model="griditem1" data-drop="{{griditem1.drop}}" jqyoui-droppable="{onDrop:'dropCallback(griditem1)'}"></div>
+			<div class="grid__item grid__item--2" ng-model="griditem2" data-drop="{{griditem2.drop}}" jqyoui-droppable="{onDrop:'dropCallback(griditem2)'}"></div>
+			<div class="grid__item grid__item--3" ng-model="griditem3" data-drop="{{griditem3.drop}}" jqyoui-droppable="{onDrop:'dropCallback(griditem3)'}"></div>
+
+			<div class="grid__item grid__item--4" ng-model="griditem4" data-drop="{{griditem4.drop}}" jqyoui-droppable="{onDrop:'dropCallback(griditem4)'}"></div>
+			<div class="grid__item grid__item--5" ng-model="griditem5" data-drop="{{griditem5.drop}}" jqyoui-droppable="{onDrop:'dropCallback(griditem5)'}"></div>
+			<div class="grid__item grid__item--6" ng-model="griditem6" data-drop="{{griditem6.drop}}" jqyoui-droppable="{onDrop:'dropCallback(griditem6)'}"></div>
+
+			<div class="grid__item grid__item--7" ng-model="griditem7" data-drop="{{griditem7.drop}}" jqyoui-droppable="{onDrop:'dropCallback(griditem7)'}"></div>
+			<div class="grid__item grid__item--8" ng-model="griditem8" data-drop="{{griditem8.drop}}" jqyoui-droppable="{onDrop:'dropCallback(griditem8)'}"></div>
+			<div class="grid__item grid__item--9" ng-model="griditem9" data-drop="{{griditem9.drop}}" jqyoui-droppable="{onDrop:'dropCallback(griditem9)'}"></div>
 		</div>
 
 	</div>
@@ -42,7 +52,15 @@
 
 	app.controller('x', function ($scope)
 	{
-		$scope.griditem = {'drop':true};
+		$scope.griditem1 = {'drop':true};
+		$scope.griditem2 = {'drop':true};
+		$scope.griditem3 = {'drop':true};
+		$scope.griditem4 = {'drop':true};
+		$scope.griditem5 = {'drop':true};
+		$scope.griditem6 = {'drop':true};
+		$scope.griditem7 = {'drop':true};
+		$scope.griditem8 = {'drop':true};
+		$scope.griditem9 = {'drop':true};
 
 		$scope.startCallback = function (event, ui) {
 		    console.log('You started draggin');

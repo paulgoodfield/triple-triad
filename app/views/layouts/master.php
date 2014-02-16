@@ -15,7 +15,7 @@
 		<div class="card-holder">
 
 			<div class="card--p{{card1.owner}}" data-drag="true" jqyoui-draggable="{animate:true, onStart:'startCallback(card1)', onStop:'stopCallback', onDrag:'dragCallback'}" data-jqyoui-options="{snap:'.grid__item', snapMode:'inner', snapTolerance:75, revert:'invalid', cursor:'move'}">
-				<div class="card__name">Card 1</div>
+				<div class="card__name">{{card1.name}}</div>
 				<div class="card__up">{{card1.up}}</div>
 				<div class="card__right">{{card1.right}}</div>
 				<div class="card__down">{{card1.down}}</div>
@@ -23,11 +23,27 @@
 			</div>
 
 			<div class="card--p{{card2.owner}}" data-drag="true" jqyoui-draggable="{animate:true, onStart:'startCallback(card2)', onStop:'stopCallback', onDrag:'dragCallback'}" data-jqyoui-options="{snap:'.grid__item', snapMode:'inner', snapTolerance:75, revert:'invalid', cursor:'move'}">
-				<div class="card__name">Card 2</div>
+				<div class="card__name">{{card2.name}}</div>
 				<div class="card__up">{{card2.up}}</div>
 				<div class="card__right">{{card2.right}}</div>
 				<div class="card__down">{{card2.down}}</div>
 				<div class="card__left">{{card2.left}}</div>
+			</div>
+
+			<div class="card--p{{card3.owner}}" data-drag="true" jqyoui-draggable="{animate:true, onStart:'startCallback(card3)', onStop:'stopCallback', onDrag:'dragCallback'}" data-jqyoui-options="{snap:'.grid__item', snapMode:'inner', snapTolerance:75, revert:'invalid', cursor:'move'}">
+				<div class="card__name">{{card3.name}}</div>
+				<div class="card__up">{{card3.up}}</div>
+				<div class="card__right">{{card3.right}}</div>
+				<div class="card__down">{{card3.down}}</div>
+				<div class="card__left">{{card3.left}}</div>
+			</div>
+
+			<div class="card--p{{card4.owner}}" data-drag="true" jqyoui-draggable="{animate:true, onStart:'startCallback(card4)', onStop:'stopCallback', onDrag:'dragCallback'}" data-jqyoui-options="{snap:'.grid__item', snapMode:'inner', snapTolerance:75, revert:'invalid', cursor:'move'}">
+				<div class="card__name">{{card4.name}}</div>
+				<div class="card__up">{{card4.up}}</div>
+				<div class="card__right">{{card4.right}}</div>
+				<div class="card__down">{{card4.down}}</div>
+				<div class="card__left">{{card4.left}}</div>
 			</div>
 
 		</div>
@@ -67,6 +83,24 @@
 			'right':3,
 			'down':2,
 			'left':1,
+			'owner':2,
+			'pos': false
+		};
+		$scope.card3 = {
+			'name':'Card 3',
+			'up':5,
+			'right':2,
+			'down':6,
+			'left':3,
+			'owner':1,
+			'pos': false
+		};
+		$scope.card4 = {
+			'name':'Card 4',
+			'up':3,
+			'right':6,
+			'down':4,
+			'left':2,
 			'owner':2,
 			'pos': false
 		};

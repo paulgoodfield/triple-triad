@@ -14,20 +14,20 @@
 
 		<div class="card-holder">
 
-			<div class="card--mine" data-drag="true" jqyoui-draggable="{animate:true, onStart:'startCallback', onStop:'stopCallback', onDrag:'dragCallback'}" data-jqyoui-options="{snap:'.grid__item', snapMode:'inner', snapTolerance:75, revert:'invalid', cursor:'move'}">
+			<div class="card--{{card1.owner}}" data-drag="true" jqyoui-draggable="{animate:true, onStart:'startCallback(card1)', onStop:'stopCallback', onDrag:'dragCallback'}" data-jqyoui-options="{snap:'.grid__item', snapMode:'inner', snapTolerance:75, revert:'invalid', cursor:'move'}">
 				<div class="card__name">Card 1</div>
-				<div class="card__up">1</div>
-				<div class="card__right">2</div>
-				<div class="card__down">3</div>
-				<div class="card__left">4</div>
+				<div class="card__up">{{card1.up}}</div>
+				<div class="card__right">{{card1.right}}</div>
+				<div class="card__down">{{card1.down}}</div>
+				<div class="card__left">{{card1.left}}</div>
 			</div>
 
-			<div class="card--mine" data-drag="true" jqyoui-draggable="{animate:true, onStart:'startCallback', onStop:'stopCallback', onDrag:'dragCallback'}" data-jqyoui-options="{snap:'.grid__item', snapMode:'inner', snapTolerance:75, revert:'invalid', cursor:'move'}">
+			<div class="card--{{card2.owner}}" data-drag="true" jqyoui-draggable="{animate:true, onStart:'startCallback(card2)', onStop:'stopCallback', onDrag:'dragCallback'}" data-jqyoui-options="{snap:'.grid__item', snapMode:'inner', snapTolerance:75, revert:'invalid', cursor:'move'}">
 				<div class="card__name">Card 2</div>
-				<div class="card__up">4</div>
-				<div class="card__right">3</div>
-				<div class="card__down">2</div>
-				<div class="card__left">1</div>
+				<div class="card__up">{{card2.up}}</div>
+				<div class="card__right">{{card2.right}}</div>
+				<div class="card__down">{{card2.down}}</div>
+				<div class="card__left">{{card2.left}}</div>
 			</div>
 
 		</div>
@@ -52,18 +52,34 @@
 
 	app.controller('x', function ($scope)
 	{
-		$scope.griditem1 = {'drop':true};
-		$scope.griditem2 = {'drop':true};
-		$scope.griditem3 = {'drop':true};
-		$scope.griditem4 = {'drop':true};
-		$scope.griditem5 = {'drop':true};
-		$scope.griditem6 = {'drop':true};
-		$scope.griditem7 = {'drop':true};
-		$scope.griditem8 = {'drop':true};
-		$scope.griditem9 = {'drop':true};
+		$scope.card1 = {
+			'up':1,
+			'right':2,
+			'down':3,
+			'left':4,
+			'owner':'mine'
+		};
+		$scope.card2 = {
+			'up':4,
+			'right':3,
+			'down':2,
+			'left':1,
+			'owner':'mine'
+		};
 
-		$scope.startCallback = function (event, ui) {
-		    console.log('You started draggin');
+		$scope.griditem1 = {'num':1,'drop':true};
+		$scope.griditem2 = {'num':2,'drop':true};
+		$scope.griditem3 = {'num':3,'drop':true};
+		$scope.griditem4 = {'num':4,'drop':true};
+		$scope.griditem5 = {'num':5,'drop':true};
+		$scope.griditem6 = {'num':6,'drop':true};
+		$scope.griditem7 = {'num':7,'drop':true};
+		$scope.griditem8 = {'num':8,'drop':true};
+		$scope.griditem9 = {'num':9,'drop':true};
+
+		$scope.startCallback = function (event, ui, card) {
+		    console.log('You started draggin '+ card.up);
+		    $scope.currUp = card.up;
 		};
 
 		$scope.stopCallback = function (event, ui) {
@@ -74,8 +90,10 @@
 		    console.log('hey, look I`m flying');
 		};
 
-		$scope.dropCallback = function (event, ui, item2) {
-		    item2.drop = false;
+		$scope.dropCallback = function (event, ui, griditem) {
+			//console.log($scope.currUp);
+			console.log('Dropped onto grid '+griditem.num);
+			griditem.drop = false;
 		};
 	});
 	</script>

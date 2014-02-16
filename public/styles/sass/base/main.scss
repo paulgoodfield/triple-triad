@@ -94,6 +94,9 @@ textarea {
 * {
 	@include box-sizing(border-box);
 }
+body {
+	padding: 50px;
+}
 
 /* ==========================================================================
    Helper classes

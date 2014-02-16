@@ -22,5 +22,5 @@ Route::get('/', function()
 		$data['html'] .= $c->make();
 	}
 
-	return View::make('cards.show', $data);
+	return View::make('layouts.master', $data);
 });

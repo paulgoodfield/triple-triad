@@ -15,12 +15,17 @@ Route::get('/', function()
 {
 	$cards = Card::all();
 
-	$data['html'] = '';
-
+	$arr = array();
 	foreach( $cards as $c )
 	{
-		$data['html'] .= $c->make();
+		array_push( $arr, $c );
 	}
+	shuffle( $arr );
+
+	$chunks = array_chunk( $arr, 5 );
+
+	$data['p1_cards'] = $chunks[0];
+	$data['p2_cards'] = $chunks[1];
 
 	return View::make('layouts.master', $data);
 });

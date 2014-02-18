@@ -613,7 +613,9 @@ body {
 .grid {
   position: relative;
   float: left;
-  margin-left: 50px; }
+  width: 450px;
+  height: 450px;
+  margin: 0 50px; }
 
 .grid__item {
   position: absolute;

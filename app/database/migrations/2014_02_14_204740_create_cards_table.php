@@ -17,10 +17,10 @@ class CreateCardsTable extends Migration {
 			$table->integer('id')->unsigned();
 			$table->primary('id');
 			$table->string('name');
-			$table->string('u', 1);
-			$table->string('r', 1);
-			$table->string('d', 1);
-			$table->string('l', 1);
+			$table->tinyInteger('u')->unsigned();
+			$table->tinyInteger('r')->unsigned();
+			$table->tinyInteger('d')->unsigned();
+			$table->tinyInteger('l')->unsigned();
 			$table->tinyInteger('level')->unsigned();
 		});
 	}

@@ -18,7 +18,7 @@
 			$i = 1;
 			foreach( $p1_cards as $c ) {
 			?>
-			<div class="card--p{{card<?php echo $i; ?>.owner}}" data-drag="true" jqyoui-draggable="{animate:true, onStart:'startCallback(card<?php echo $i; ?>)', onStop:'stopCallback', onDrag:'dragCallback'}" data-jqyoui-options="{snap:'.grid__item', snapMode:'inner', snapTolerance:75, revert:'invalid', cursor:'move'}">
+			<div class="card--p{{card<?php echo $i; ?>.owner}}" data-drag="{{drag1}}" jqyoui-draggable="{animate:true, onStart:'startCallback(card<?php echo $i; ?>)', onStop:'stopCallback', onDrag:'dragCallback'}" data-jqyoui-options="{snap:'.grid__item', snapMode:'inner', snapTolerance:75, revert:'invalid', cursor:'move'}">
 				<div class="card__name">{{card<?php echo $i; ?>.name}}</div>
 				<div class="card__up">{{card<?php echo $i; ?>.up}}</div>
 				<div class="card__right">{{card<?php echo $i; ?>.right}}</div>
@@ -52,7 +52,7 @@
 			$i = 6;
 			foreach( $p2_cards as $c ) {
 			?>
-			<div class="card--p{{card<?php echo $i; ?>.owner}}" data-drag="true" jqyoui-draggable="{animate:true, onStart:'startCallback(card<?php echo $i; ?>)', onStop:'stopCallback', onDrag:'dragCallback'}" data-jqyoui-options="{snap:'.grid__item', snapMode:'inner', snapTolerance:75, revert:'invalid', cursor:'move'}">
+			<div class="card--p{{card<?php echo $i; ?>.owner}}" data-drag="{{drag2}}" jqyoui-draggable="{animate:true, onStart:'startCallback(card<?php echo $i; ?>)', onStop:'stopCallback', onDrag:'dragCallback'}" data-jqyoui-options="{snap:'.grid__item', snapMode:'inner', snapTolerance:75, revert:'invalid', cursor:'move'}">
 				<div class="card__name">{{card<?php echo $i; ?>.name}}</div>
 				<div class="card__up">{{card<?php echo $i; ?>.up}}</div>
 				<div class="card__right">{{card<?php echo $i; ?>.right}}</div>
@@ -72,6 +72,16 @@
 
 	app.controller('x', function ($scope)
 	{
+		$scope.turn = Math.floor((Math.random()*2)+1);
+
+		$scope.drag1 = true;
+		$scope.drag2 = false;
+
+		if ( $scope.turn == 2 ) {
+			$scope.drag1 = false;
+			$scope.drag2 = true;
+		}
+
 		<?php
 		$i = 1;
 		foreach( $p1_cards as $c ) {
@@ -83,7 +93,8 @@
 			'down':<?php echo $c->d; ?>,
 			'left':<?php echo $c->l; ?>,
 			'owner':1,
-			'pos': false
+			'pos':false,
+			'drag':$scope.drag1
 		};
 		<?php
 			$i++;
@@ -100,7 +111,8 @@
 			'down':<?php echo $c->d; ?>,
 			'left':<?php echo $c->l; ?>,
 			'owner':2,
-			'pos': false
+			'pos':false,
+			'drag':$scope.drag2
 		};
 		<?php
 			$i++;
@@ -297,6 +309,19 @@
 				{
 					$scope.griditem8.card.owner = card.owner;
 				}
+			}
+
+			if ( $scope.turn == 1 )
+			{
+				$scope.drag1 	= false;
+				$scope.drag2 	= true;
+				$scope.turn 	= 2;
+			}
+			else
+			{
+				$scope.drag1 	= true;
+				$scope.drag2 	= false;
+				$scope.turn 	= 1;
 			}
 		};
 	});

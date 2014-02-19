@@ -50,6 +50,11 @@
 .card-holder {
 	float: left;
 	width: 150px;
+	padding-top: 20px;
+}
+.card-holder--active {
+	@extend .card-holder;
+	background-color: yellow;
 }
 
 .grid {

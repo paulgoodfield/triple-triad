@@ -12,8 +12,8 @@
 <body>
 	<div ng-app="app" ng-controller="x">
 
-		<div class="card-holder">
-
+		<div class="card-holder{{holder1class}}">
+			<span>{{winner1}}</span>
 			<?php
 			$i = 1;
 			foreach( $p1_cards as $c ) {
@@ -46,8 +46,8 @@
 			<div class="grid__item grid__item--9" ng-model="griditem9" data-drop="{{griditem9.drop}}" jqyoui-droppable="{onDrop:'dropCallback(griditem9)'}"></div>
 		</div>
 
-		<div class="card-holder">
-
+		<div class="card-holder{{holder2class}}">
+			<span>{{winner2}}</span>
 			<?php
 			$i = 6;
 			foreach( $p2_cards as $c ) {
@@ -74,13 +74,21 @@
 	{
 		$scope.turn = Math.floor((Math.random()*2)+1);
 
-		$scope.drag1 = true;
-		$scope.drag2 = false;
+		$scope.drag1 		= true;
+		$scope.drag2 		= false;
+		$scope.holder1class	= '--active';
+		$scope.holder2class	= '';
 
 		if ( $scope.turn == 2 ) {
 			$scope.drag1 = false;
 			$scope.drag2 = true;
+			$scope.holder1class	= '';
+			$scope.holder2class	= '--active';
 		}
+
+		$scope.num_turns 	= 0;
+		$scope.winner1		= '';
+		$scope.winner2		= '';
 
 		<?php
 		$i = 1;
@@ -311,17 +319,31 @@
 				}
 			}
 
-			if ( $scope.turn == 1 )
+			$scope.num_turns++;
+
+			if ( $scope.num_turns == 9 )
 			{
-				$scope.drag1 	= false;
-				$scope.drag2 	= true;
-				$scope.turn 	= 2;
+				//alert( 'game over' );
 			}
-			else
+
+			if ( $scope.num_turns < 9 )
 			{
-				$scope.drag1 	= true;
-				$scope.drag2 	= false;
-				$scope.turn 	= 1;
+				if ( $scope.turn == 1 )
+				{
+					$scope.drag1 		= false;
+					$scope.drag2 		= true;
+					$scope.turn 		= 2;
+					$scope.holder1class	= '';
+					$scope.holder2class	= '--active';
+				}
+				else
+				{
+					$scope.drag1 		= true;
+					$scope.drag2 		= false;
+					$scope.turn 		= 1;
+					$scope.holder1class	= '--active';
+					$scope.holder2class	= '';
+				}
 			}
 		};
 	});

@@ -606,9 +606,13 @@ body {
   top: 60px;
   width: 100%; }
 
-.card-holder {
+.card-holder, .card-holder--active {
   float: left;
-  width: 150px; }
+  width: 150px;
+  padding-top: 20px; }
+
+.card-holder--active {
+  background-color: yellow; }
 
 .grid {
   position: relative;

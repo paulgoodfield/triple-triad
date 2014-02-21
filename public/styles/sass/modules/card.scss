@@ -1,12 +1,11 @@
 .card {
 	position: relative;
-	width: 150px;
-	height: 150px;
-	border: 1px solid black;
+	width: 93px;
+	height: 120px;
 	cursor: pointer;
 	@include transition (background-color 0.5s ease-in-out);
 
-	* {
+	div {
 		position: absolute;
 		text-align: center;
 		padding: 10px;
@@ -15,11 +14,11 @@
 }
 .card--p1 {
 	@extend .card;
-	background-color: blue;
+	@include linear-gradient(#E7E7E7, #2142BD);
 }
 .card--p2 {
 	@extend .card;
-	background-color: red;
+	@include linear-gradient(#F8C8E8, #984968);
 }
 
 .card__name {
@@ -49,7 +48,7 @@
 
 .card-holder {
 	float: left;
-	width: 150px;
+	width: 93px;
 	padding-top: 20px;
 }
 .card-holder--active {
@@ -60,14 +59,14 @@
 .grid {
 	position: relative;
 	float: left;
-	width: 450px;
-	height: 450px;
+	width: 279px;
+	height: 360px;
 	margin: 0 50px;
 }
 .grid__item {
 	position: absolute;
-	width: 150px;
-	height: 150px;
+	width: 93px;
+	height: 120px;
 	border: 1px solid grey;
 	border-collapse: collapse;
 }
@@ -77,33 +76,33 @@
 }
 .grid__item--2 {
 	top: 0;
-	left: 150px;
+	left: 93px;
 }
 .grid__item--3 {
 	top: 0;
-	left: 300px;
+	left: 186px;
 }
 .grid__item--4 {
-	top: 150px;
+	top: 120px;
 	left: 0;
 }
 .grid__item--5 {
-	top: 150px;
-	left: 150px;
+	top: 120px;
+	left: 93px;
 }
 .grid__item--6 {
-	top: 150px;
-	left: 300px;
+	top: 120px;
+	left: 186px;
 }
 .grid__item--7 {
-	top: 300px;
+	top: 240px;
 	left: 0;
 }
 .grid__item--8 {
-	top: 300px;
-	left: 150px;
+	top: 240px;
+	left: 93px;
 }
 .grid__item--9 {
-	top: 300px;
-	left: 300px;
+	top: 240px;
+	left: 186px;
 }

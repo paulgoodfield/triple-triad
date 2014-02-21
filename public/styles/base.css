@@ -563,24 +563,29 @@ body {
     page-break-after: avoid; } }
 .card, .card--p1, .card--p2 {
   position: relative;
-  width: 150px;
-  height: 150px;
-  border: 1px solid black;
+  width: 93px;
+  height: 120px;
   cursor: pointer;
   -webkit-transition: background-color 0.5s ease-in-out;
   -moz-transition: background-color 0.5s ease-in-out;
   transition: background-color 0.5s ease-in-out; }
-  .card *, .card--p1 *, .card--p2 * {
+  .card div, .card--p1 div, .card--p2 div {
     position: absolute;
     text-align: center;
     padding: 10px;
     color: white; }
 
 .card--p1 {
-  background-color: blue; }
+  background-color: #e7e7e7;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e7e7e7), color-stop(100%, #2142bd));
+  background-image: -webkit-linear-gradient(#e7e7e7, #2142bd);
+  background-image: linear-gradient(#e7e7e7, #2142bd); }
 
 .card--p2 {
-  background-color: red; }
+  background-color: #f8c8e8;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f8c8e8), color-stop(100%, #984968));
+  background-image: -webkit-linear-gradient(#f8c8e8, #984968);
+  background-image: linear-gradient(#f8c8e8, #984968); }
 
 .card__name {
   bottom: 0;
@@ -608,7 +613,7 @@ body {
 
 .card-holder, .card-holder--active {
   float: left;
-  width: 150px;
+  width: 93px;
   padding-top: 20px; }
 
 .card-holder--active {
@@ -617,14 +622,14 @@ body {
 .grid {
   position: relative;
   float: left;
-  width: 450px;
-  height: 450px;
+  width: 279px;
+  height: 360px;
   margin: 0 50px; }
 
 .grid__item {
   position: absolute;
-  width: 150px;
-  height: 150px;
+  width: 93px;
+  height: 120px;
   border: 1px solid grey;
   border-collapse: collapse; }
 
@@ -634,34 +639,34 @@ body {
 
 .grid__item--2 {
   top: 0;
-  left: 150px; }
+  left: 93px; }
 
 .grid__item--3 {
   top: 0;
-  left: 300px; }
+  left: 186px; }
 
 .grid__item--4 {
-  top: 150px;
+  top: 120px;
   left: 0; }
 
 .grid__item--5 {
-  top: 150px;
-  left: 150px; }
+  top: 120px;
+  left: 93px; }
 
 .grid__item--6 {
-  top: 150px;
-  left: 300px; }
+  top: 120px;
+  left: 186px; }
 
 .grid__item--7 {
-  top: 300px;
+  top: 240px;
   left: 0; }
 
 .grid__item--8 {
-  top: 300px;
-  left: 150px; }
+  top: 240px;
+  left: 93px; }
 
 .grid__item--9 {
-  top: 300px;
-  left: 300px; }
+  top: 240px;
+  left: 186px; }
 
 /*# sourceMappingURL=base.css.map */

@@ -20,11 +20,11 @@
 			?>
 			<div class="card--p{{card<?php echo $i; ?>.owner}}" data-drag="{{drag1}}" jqyoui-draggable="{animate:true, onStart:'startCallback(card<?php echo $i; ?>)', onStop:'stopCallback', onDrag:'dragCallback'}" data-jqyoui-options="{snap:'.grid__item', snapMode:'inner', snapTolerance:75, revert:'invalid', cursor:'move'}">
 				<img src="<?php echo asset('images/cards/'.Str::slug( $c->name ).'.png'); ?>" />
-				<div class="card__name">{{card<?php echo $i; ?>.name}}</div>
+				<!--<div class="card__name">{{card<?php echo $i; ?>.name}}</div>
 				<div class="card__up">{{card<?php echo $i; ?>.up}}</div>
 				<div class="card__right">{{card<?php echo $i; ?>.right}}</div>
 				<div class="card__down">{{card<?php echo $i; ?>.down}}</div>
-				<div class="card__left">{{card<?php echo $i; ?>.left}}</div>
+				<div class="card__left">{{card<?php echo $i; ?>.left}}</div>-->
 			</div>
 			<?php
 				$i++;
@@ -55,11 +55,11 @@
 			?>
 			<div class="card--p{{card<?php echo $i; ?>.owner}}" data-drag="{{drag2}}" jqyoui-draggable="{animate:true, onStart:'startCallback(card<?php echo $i; ?>)', onStop:'stopCallback', onDrag:'dragCallback'}" data-jqyoui-options="{snap:'.grid__item', snapMode:'inner', snapTolerance:75, revert:'invalid', cursor:'move'}">
 				<img src="<?php echo asset('images/cards/'.Str::slug( $c->name ).'.png'); ?>" />
-				<div class="card__name">{{card<?php echo $i; ?>.name}}</div>
+				<!--<div class="card__name">{{card<?php echo $i; ?>.name}}</div>
 				<div class="card__up">{{card<?php echo $i; ?>.up}}</div>
 				<div class="card__right">{{card<?php echo $i; ?>.right}}</div>
 				<div class="card__down">{{card<?php echo $i; ?>.down}}</div>
-				<div class="card__left">{{card<?php echo $i; ?>.left}}</div>
+				<div class="card__left">{{card<?php echo $i; ?>.left}}</div>-->
 			</div>
 			<?php
 				$i++;

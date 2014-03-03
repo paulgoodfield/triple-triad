@@ -132,7 +132,7 @@ class CardsTableSeeder extends Seeder {
 		Card::create( array( 'id' => 91, 'name' => 'Leviathan', 'u' => 7, 'r' => 10, 'd' => 1, 'l' => 7, 'level' => 9 ) );
 		Card::create( array( 'id' => 92, 'name' => 'Odin', 'u' => 8, 'r' => 10, 'd' => 3, 'l' => 5, 'level' => 9 ) );
 		Card::create( array( 'id' => 93, 'name' => 'Pandemona', 'u' => 10, 'r' => 1, 'd' => 7, 'l' => 7, 'level' => 9 ) );
-		Card::create( array( 'id' => 94, 'name' => 'Cererus', 'u' => 7, 'r' => 4, 'd' => 6, 'l' => 10, 'level' => 9 ) );
+		Card::create( array( 'id' => 94, 'name' => 'Cerberus', 'u' => 7, 'r' => 4, 'd' => 6, 'l' => 10, 'level' => 9 ) );
 		Card::create( array( 'id' => 95, 'name' => 'Alexander', 'u' => 9, 'r' => 10, 'd' => 4, 'l' => 2, 'level' => 9 ) );
 		Card::create( array( 'id' => 96, 'name' => 'Phoenix', 'u' => 7, 'r' => 2, 'd' => 7, 'l' => 10, 'level' => 9 ) );
 		Card::create( array( 'id' => 97, 'name' => 'Bahamut', 'u' => 10, 'r' => 8, 'd' => 2, 'l' => 6, 'level' => 9 ) );

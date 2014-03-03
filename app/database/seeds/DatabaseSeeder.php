@@ -67,7 +67,7 @@ class CardsTableSeeder extends Seeder {
 		Card::create( array( 'id' => 36, 'name' => 'T-Rexaur', 'u' => 4, 'r' => 6, 'd' => 2, 'l' => 7, 'level' => 4 ) );
 		Card::create( array( 'id' => 37, 'name' => 'Bomb', 'u' => 2, 'r' => 7, 'd' => 6, 'l' => 3, 'level' => 4 ) );
 		Card::create( array( 'id' => 38, 'name' => 'Blitz', 'u' => 1, 'r' => 6, 'd' => 4, 'l' => 7, 'level' => 4 ) );
-		Card::create( array( 'id' => 39, 'name' => 'Wendingo', 'u' => 7, 'r' => 3, 'd' => 1, 'l' => 6, 'level' => 4 ) );
+		Card::create( array( 'id' => 39, 'name' => 'Wendigo', 'u' => 7, 'r' => 3, 'd' => 1, 'l' => 6, 'level' => 4 ) );
 		Card::create( array( 'id' => 40, 'name' => 'Torama', 'u' => 7, 'r' => 4, 'd' => 4, 'l' => 4, 'level' => 4 ) );
 		Card::create( array( 'id' => 41, 'name' => 'Imp', 'u' => 3, 'r' => 7, 'd' => 3, 'l' => 6, 'level' => 4 ) );
 		Card::create( array( 'id' => 42, 'name' => 'Blue Dragon', 'u' => 6, 'r' => 2, 'd' => 7, 'l' => 3, 'level' => 4 ) );

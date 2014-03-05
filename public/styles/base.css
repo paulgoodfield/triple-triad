@@ -561,55 +561,61 @@ body {
   h2,
   h3 {
     page-break-after: avoid; } }
-.card, .card--p1, .card--p2 {
+.card, .card--p1,
+.card--p2 {
   position: relative;
   width: 93px;
   height: 120px;
   cursor: pointer;
-  -webkit-transition: background-color 0.5s ease-in-out;
-  -moz-transition: background-color 0.5s ease-in-out;
-  transition: background-color 0.5s ease-in-out; }
-  .card div, .card--p1 div, .card--p2 div {
-    position: absolute;
-    text-align: center;
-    padding: 10px;
-    color: white; }
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-perspective: 150px;
+  -moz-perspective: 150px;
+  perspective: 150px;
+  -webkit-transform: translateZ(150px);
+  -moz-transform: translateZ(150px);
+  -ms-transform: translateZ(150px);
+  -o-transform: translateZ(150px);
+  transform: translateZ(150px); }
 
-.card--p1 {
+.card__face, .card__face--1, .card__face--2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out; }
+
+.card__face--1 {
   background-color: #e7e7e7;
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e7e7e7), color-stop(100%, #2142bd));
   background-image: -webkit-linear-gradient(#e7e7e7, #2142bd);
   background-image: linear-gradient(#e7e7e7, #2142bd); }
 
-.card--p2 {
+.card__face--2 {
   background-color: #f8c8e8;
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f8c8e8), color-stop(100%, #984968));
   background-image: -webkit-linear-gradient(#f8c8e8, #984968);
   background-image: linear-gradient(#f8c8e8, #984968); }
 
-.card__name {
-  bottom: 0;
-  width: 100%; }
+.card--p1 .card__face--2 {
+  -webkit-transform: perspective(150px) rotateY(179.9deg);
+  -moz-transform: perspective(150px) rotateY(179.9deg);
+  -ms-transform: perspective(150px) rotateY(179.9deg);
+  -o-transform: perspective(150px) rotateY(179.9deg);
+  transform: perspective(150px) rotateY(179.9deg); }
 
-.card__up {
-  top: 0;
-  width: 100%; }
-
-.card__right,
-.card__left {
-  position: absolute;
-  top: 30px;
-  width: 50%; }
-
-.card__right {
-  right: 0; }
-
-.card__left {
-  left: 0; }
-
-.card__down {
-  top: 60px;
-  width: 100%; }
+.card--p2 .card__face--1 {
+  -webkit-transform: perspective(150px) rotateY(-179.9deg);
+  -moz-transform: perspective(150px) rotateY(-179.9deg);
+  -ms-transform: perspective(150px) rotateY(-179.9deg);
+  -o-transform: perspective(150px) rotateY(-179.9deg);
+  transform: perspective(150px) rotateY(-179.9deg); }
 
 .card-holder, .card-holder--active {
   float: left;

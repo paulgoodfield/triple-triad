@@ -3,47 +3,38 @@
 	width: 93px;
 	height: 120px;
 	cursor: pointer;
-	@include transition (background-color 0.5s ease-in-out);
-
-	div {
-		position: absolute;
-		text-align: center;
-		padding: 10px;
-		color: white;
-	}
+	@include transform-style(preserve-3d);
+	@include perspective(150px);
+	@include transform(translateZ(150px));
 }
-.card--p1 {
-	@extend .card;
-	@include linear-gradient(#E7E7E7, #2142BD);
-}
+.card--p1,
 .card--p2 {
 	@extend .card;
+}
+.card__face {
+	position: absolute;
+	top: 0;
+	left: 0;
+	@include backface-visibility(hidden);
+	@include transition(all 0.5s ease-in-out);
+}
+.card__face--1 {
+	@extend .card__face;
+	@include linear-gradient(#E7E7E7, #2142BD);
+}
+.card__face--2 {
+	@extend .card__face;
 	@include linear-gradient(#F8C8E8, #984968);
 }
-
-.card__name {
-	bottom: 0;
-	width: 100%;
+.card--p1 {
+	.card__face--2 {
+		@include transform(perspective(150px) rotateY(179.9deg));
+	}
 }
-.card__up {
-	top: 0;
-	width: 100%;
-}
-.card__right,
-.card__left {
-	position: absolute;
-	top: 30px;
-	width: 50%;
-}
-.card__right {
-	right: 0;
-}
-.card__left {
-	left: 0;
-}
-.card__down {
-	top: 60px;
-	width: 100%;
+.card--p2 {
+	.card__face--1 {
+		@include transform(perspective(150px) rotateY(-179.9deg));
+	}
 }
 
 .card-holder {

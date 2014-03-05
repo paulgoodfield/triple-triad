@@ -89,8 +89,8 @@
 		}
 
 		$scope.num_turns 	= 0;
-		$scope.winner1		= '';
-		$scope.winner2		= '';
+		$scope.num_cards1	= 5;
+		$scope.num_cards2	= 5;
 
 		<?php
 		$i = 1;
@@ -188,6 +188,36 @@
 		    //console.log('hey, look I`m flying');
 		};
 
+		var num_won;
+
+		function checkgriditem(g,c,f) {
+
+			if (f == 'u') {
+				gface = g.card.up;
+				cface = c.down;
+			}
+			if (f == 'r') {
+				gface = g.card.right;
+				cface = c.left;
+			}
+			if (f == 'd') {
+				gface = g.card.down;
+				cface = c.up;
+			}
+			if (f == 'l') {
+				gface = g.card.left;
+				cface = c.right;
+			}
+
+			if ( g.card != false && g.card.owner != c.owner && gface < cface )
+			{
+				g.card.owner = c.owner;
+				num_won++;
+			}
+
+			console.log(num_won);
+		}
+
 		$scope.dropCallback = function (event, ui, griditem) {
 			card 		= $scope.currCard;
 			card.pos 	= griditem.num;
@@ -197,127 +227,67 @@
 			griditem.drop 	= false;
 			griditem.card	= card;
 
+			num_won = 0;
+
 			if ( card.pos == 1 )
 			{
-				if ( $scope.griditem2.card != false && $scope.griditem2.card.left < card.right )
-				{
-					$scope.griditem2.card.owner = card.owner;
-				}
-				if ( $scope.griditem4.card != false && $scope.griditem4.card.up < card.down )
-				{
-					$scope.griditem4.card.owner = card.owner;
-				}
+				checkgriditem($scope.griditem2, card, 'l');
+				checkgriditem($scope.griditem4, card, 'u');
 			}
 			if ( card.pos == 2 )
 			{
-				if ( $scope.griditem1.card != false && $scope.griditem1.card.right < card.left )
-				{
-					$scope.griditem1.card.owner = card.owner;
-				}
-				if ( $scope.griditem3.card != false && $scope.griditem3.card.left < card.right )
-				{
-					$scope.griditem3.card.owner = card.owner;
-				}
-				if ( $scope.griditem5.card != false && $scope.griditem5.card.up < card.down )
-				{
-					$scope.griditem5.card.owner = card.owner;
-				}
+				checkgriditem($scope.griditem1, card, 'r');
+				checkgriditem($scope.griditem3, card, 'l');
+				checkgriditem($scope.griditem5, card, 'u');
 			}
 			if ( card.pos == 3 )
 			{
-				if ( $scope.griditem2.card != false && $scope.griditem2.card.right < card.left )
-				{
-					$scope.griditem2.card.owner = card.owner;
-				}
-				if ( $scope.griditem6.card != false && $scope.griditem6.card.up < card.down )
-				{
-					$scope.griditem6.card.owner = card.owner;
-				}
+				checkgriditem($scope.griditem2, card, 'r');
+				checkgriditem($scope.griditem6, card, 'u');
 			}
 			if ( card.pos == 4 )
 			{
-				if ( $scope.griditem1.card != false && $scope.griditem1.card.down < card.up )
-				{
-					$scope.griditem1.card.owner = card.owner;
-				}
-				if ( $scope.griditem5.card != false && $scope.griditem5.card.left < card.right )
-				{
-					$scope.griditem5.card.owner = card.owner;
-				}
-				if ( $scope.griditem7.card != false && $scope.griditem7.card.up < card.down )
-				{
-					$scope.griditem7.card.owner = card.owner;
-				}
+				checkgriditem($scope.griditem1, card, 'd');
+				checkgriditem($scope.griditem5, card, 'l');
+				checkgriditem($scope.griditem7, card, 'u');
 			}
 			if ( card.pos == 5 )
 			{
-				if ( $scope.griditem2.card != false && $scope.griditem2.card.down < card.up )
-				{
-					$scope.griditem2.card.owner = card.owner;
-				}
-				if ( $scope.griditem4.card != false && $scope.griditem4.card.right < card.left )
-				{
-					$scope.griditem4.card.owner = card.owner;
-				}
-				if ( $scope.griditem6.card != false && $scope.griditem6.card.left < card.right )
-				{
-					$scope.griditem6.card.owner = card.owner;
-				}
-				if ( $scope.griditem8.card != false && $scope.griditem8.card.up < card.down )
-				{
-					$scope.griditem8.card.owner = card.owner;
-				}
+				checkgriditem($scope.griditem2, card, 'd');
+				checkgriditem($scope.griditem4, card, 'r');
+				checkgriditem($scope.griditem6, card, 'l');
+				checkgriditem($scope.griditem8, card, 'u');
 			}
 			if ( card.pos == 6 )
 			{
-				if ( $scope.griditem3.card != false && $scope.griditem3.card.down < card.up )
-				{
-					$scope.griditem3.card.owner = card.owner;
-				}
-				if ( $scope.griditem5.card != false && $scope.griditem5.card.right < card.left )
-				{
-					$scope.griditem5.card.owner = card.owner;
-				}
-				if ( $scope.griditem9.card != false && $scope.griditem9.card.up < card.down )
-				{
-					$scope.griditem9.card.owner = card.owner;
-				}
+				checkgriditem($scope.griditem3, card, 'd');
+				checkgriditem($scope.griditem5, card, 'r');
+				checkgriditem($scope.griditem9, card, 'u');
 			}
 			if ( card.pos == 7 )
 			{
-				if ( $scope.griditem4.card != false && $scope.griditem4.card.down < card.up )
-				{
-					$scope.griditem4.card.owner = card.owner;
-				}
-				if ( $scope.griditem8.card != false && $scope.griditem8.card.left < card.right )
-				{
-					$scope.griditem8.card.owner = card.owner;
-				}
+				checkgriditem($scope.griditem4, card, 'd');
+				checkgriditem($scope.griditem8, card, 'l');
 			}
 			if ( card.pos == 8 )
 			{
-				if ( $scope.griditem7.card != false && $scope.griditem7.card.right < card.left )
-				{
-					$scope.griditem7.card.owner = card.owner;
-				}
-				if ( $scope.griditem5.card != false && $scope.griditem5.card.down < card.up )
-				{
-					$scope.griditem5.card.owner = card.owner;
-				}
-				if ( $scope.griditem9.card != false && $scope.griditem9.card.left < card.right )
-				{
-					$scope.griditem9.card.owner = card.owner;
-				}
+				checkgriditem($scope.griditem7, card, 'r');
+				checkgriditem($scope.griditem5, card, 'd');
+				checkgriditem($scope.griditem9, card, 'l');
 			}
 			if ( card.pos == 9 )
 			{
-				if ( $scope.griditem6.card != false && $scope.griditem6.card.down < card.up )
-				{
-					$scope.griditem6.card.owner = card.owner;
+				checkgriditem($scope.griditem6, card, 'd');
+				checkgriditem($scope.griditem8, card, 'r');
+			}
+
+			if (num_won > 0) {
+				if (card.owner == 1) {
+					$scope.num_cards1 += num_won ;
 				}
-				if ( $scope.griditem8.card != false && $scope.griditem8.card.right < card.left )
+				else
 				{
-					$scope.griditem8.card.owner = card.owner;
+					$scope.num_cards2 += num_won;
 				}
 			}
 
@@ -325,7 +295,17 @@
 
 			if ( $scope.num_turns == 9 )
 			{
-				//alert( 'game over' );
+				if ($scope.num_cards1 > $scope.num_cards2) {
+					msg = 'Player 1 Wins!';
+				}
+				else if ($scope.num_cards2 > $scope.num_cards1) {
+					msg = 'Player 2 Wins!';
+				}
+				else {
+					msg = 'Draw!';
+				}
+
+				alert(msg);
 			}
 
 			if ( $scope.num_turns < 9 )
